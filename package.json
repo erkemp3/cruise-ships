@@ -1,0 +1,26 @@
+{
+  "name": "cruise-ships",
+  "version": "1.0.0",
+  "description": "cruise ship ",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/erkemp3/cruise-ships.git"
+  },
+  "keywords": [
+    "cruise",
+    "ship"
+  ],
+  "author": "erkemp3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erkemp3/cruise-ships/issues"
+  },
+  "homepage": "https://github.com/erkemp3/cruise-ships#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
