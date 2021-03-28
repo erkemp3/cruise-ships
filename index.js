@@ -1,4 +1,4 @@
-const Ship = require("./src/ship");
+const Ship = require("./src/ship.js");
 
 const port = "Southampton";
 const ship = new Ship(port);
