@@ -1,23 +1,39 @@
+const { prototype } = require("../src/ship.js");
 const Ship = require("../src/ship.js");
+const Port = require("../src/port.js");
 
 describe("Ship", () => {
   it("can be instantiated", () => {
     expect(new Ship()).toBeInstanceOf(Object);
   });
 
-  it("has the given starting port", () => {
-    const ship = new Ship("Dover");
+  it("has a starting port", () => {
+    const port = new Port("Dover");
+    const ship = new Ship(port);
 
-    expect(ship.startingPort).toEqual("Dover");
+    expect(ship.currentPort).toEqual(port);
   });
 });
 
 describe("setSail", () => {
   it("can set sail", () => {
-    const ship = new Ship("Dover");
+    const port = new Port("Dover");
+    const ship = new Ship(port);
 
     ship.setSail();
 
-    expect(ship.startingPort).toBeFalsy();
+    expect(ship.currentPort).toBeFalsy();
+  });
+});
+
+describe("dock", () => {
+  it("can dock at a new port", () => {
+    const dover = new Port("Dover");
+    const ship = new Ship(dover);
+
+    const plymouth = new Port("Plymouth");
+    ship.dock(plymouth);
+
+    expect(ship.currentPort).toEqual(plymouth);
   });
 });

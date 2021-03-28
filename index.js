@@ -1,10 +1,12 @@
 const Ship = require("./src/ship.js");
 
-const port = "Southampton";
-const ship = new Ship(port);
+const ship = new Ship("Southampton");
 
-console.log(ship.port);
+const nextPort = new Port("Dover");
+
+console.log(ship.startingPort);
+console.log(nextPort.name);
 
 ship.setSail();
 
-console.log(ship.port);
+console.log(ship.startingPort);
