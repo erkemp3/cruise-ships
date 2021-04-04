@@ -2,13 +2,13 @@ const Port = require("../src/port");
 
 describe("Port", () => {
   let port;
-  let titanic;
-  let queenMary;
+  let ship;
+  let ship2;
 
   beforeEach(() => {
     port = new Port("Dover");
-    titanic = {};
-    queenMary = {};
+    ship = jest.fn();
+    ship2 = jest.fn();
   });
 
   describe("constructor", () => {
@@ -19,16 +19,16 @@ describe("Port", () => {
       expect(port.name).toEqual("Dover");
     });
     it("can add a ship", () => {
-      port.addShip(titanic);
+      port.addShip(ship);
 
-      expect(port.ships).toContain(titanic);
+      expect(port.ships).toContain(ship);
     });
     it("can remove a ship", () => {
-      port.addShip(titanic);
-      port.addShip(queenMary);
-      port.removeShip(queenMary);
+      port.addShip(ship);
+      port.addShip(ship2);
+      port.removeShip(ship2);
 
-      expect(port.ships).toEqual([titanic]);
+      expect(port.ships).toEqual([ship]);
     });
   });
 });
