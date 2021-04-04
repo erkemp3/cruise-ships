@@ -4,14 +4,22 @@ const Port = require("../src/port.js");
 const Itinerary = require("../src/itinerary.js");
 
 describe("Ship", () => {
-  let ship;
   let dover;
   let plymouth;
-  let itinerary;
 
   beforeEach(() => {
-    dover = new Port("Dover");
-    plymouth = new Port("Plymouth");
+    dover = {
+      addShip: jest.fn(),
+      removeShip: jest.fn(),
+      name: "Dover",
+      ships: [],
+    };
+    plymouth = {
+      addShip: jest.fn(),
+      removeShip: jest.fn(),
+      name: "Plymouth",
+      ships: [],
+    };
     itinerary = new Itinerary([dover, plymouth]);
     ship = new Ship(itinerary);
   });
@@ -36,7 +44,7 @@ describe("Ship", () => {
 
       expect(ship.currentPort).toBeFalsy();
       expect(ship.previousPort).toBe(dover);
-      expect(dover.ships).not.toContain(ship);
+      expect(dover.removeShip).toHaveBeenCalledWith(ship);
     });
     it("can't sail further than its itinerary", () => {
       ship.setSail();
@@ -45,7 +53,7 @@ describe("Ship", () => {
       expect(() => ship.setSail()).toThrowError("End of itinerary reached");
     });
     it("gets added to port on instantiation", () => {
-      expect(dover.ships).toContain(ship);
+      expect(dover.addShip).toHaveBeenCalledWith(ship);
     });
   });
 
@@ -55,7 +63,7 @@ describe("Ship", () => {
       ship.dock();
 
       expect(ship.currentPort).toEqual(plymouth);
-      expect(plymouth.ships).toContain(ship);
+      expect(plymouth.addShip).toHaveBeenCalledWith(ship);
     });
   });
 });
