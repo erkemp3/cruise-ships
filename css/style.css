@@ -11,7 +11,7 @@ body {
 }
 
 #viewport {
-  width: 640px;
+  width: 1000px;
   height: 256px;
   position: relative;
   overflow-x: auto;
@@ -35,6 +35,19 @@ body {
   height: 64px;
   background-image: url("../images/ship.png");
   position: absolute;
+}
+
+#message {
+  border: 0;
+  background-color: #ffffff;
+  border-top: 3px solid #000000;
+  color: #000000;
+  padding: 7px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-family: "Press Start 2P", cursive;
+  text-align: center;
 }
 
 #sailbutton {
